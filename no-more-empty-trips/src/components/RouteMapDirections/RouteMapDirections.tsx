@@ -84,7 +84,7 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
 
   return (
     <>
-      <DeckGL
+      <DeckGL style={{top: '48px'}}
         layers={[
           ...layers,
           new IconLayer({
@@ -113,8 +113,8 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
             getColor: (d) => [Math.sqrt(d.exits), 140, 0],
           }),
         ]}
-        width={1000}
-        height={500}
+        width={1250}
+        height={"calc(100% - 48px)"}
         initialViewState={{
           longitude: stops[0].location_metadata.snapped_coordinate[0],
           latitude: stops[0].location_metadata.snapped_coordinate[1],
