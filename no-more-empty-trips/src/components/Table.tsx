@@ -14,15 +14,15 @@ function Table({ openDrawer, data }: any) {
     {
       field: "vehicle",
       headerName: "Vehicle",
-      width: 150,
-      editable: true,
-      valueGetter: (params: GridValueGetterParams) => params.row.vehicle,
+      flex: 1,
+      editable: false,
+      valueGetter: (params: GridValueGetterParams) => `Truck ${params.row.id}`,
     },
     {
       field: "start_time",
       headerName: "Start",
-      width: 150,
-      editable: true,
+      flex: 1,
+      editable: false,
       valueGetter: (params: GridValueGetterParams) =>
         //check what is happening with time
         dayjs(params.row.stops[0].eta).format("ddd, MMM D  HH:mm"),
@@ -30,8 +30,8 @@ function Table({ openDrawer, data }: any) {
     {
       field: "end_time",
       headerName: "End",
-      width: 150,
-      editable: true,
+      flex: 1,
+      editable: false,
       valueGetter: (params: GridValueGetterParams) =>
         //check what is happening with time
 
@@ -42,33 +42,29 @@ function Table({ openDrawer, data }: any) {
     {
       field: "duration",
       headerName: "Duration",
-      width: 150,
-      editable: true,
+      flex: 1,
+      editable: false,
       valueGetter: (params: GridValueGetterParams) => {
         const startTime = dayjs(params.row.stops[0].eta);
         const endTime = dayjs(
           params.row.stops[params.row.stops?.length - 1].eta
         );
-
-        const hoursDiff = endTime.diff(startTime, "hour"); // Get the difference in hours
-
-        const hours = hoursDiff % 24; // Calculate remaining hours
-        return hours;
+        return `${(Math.abs(endTime.toDate().getTime() - startTime.toDate().getTime()) / 36e5).toFixed(1)} hour(s)`;
       },
     },
     {
       field: "stops",
       headerName: "Stops",
-      width: 150,
-      editable: true,
-      valueGetter: (params: GridValueGetterParams) => params.row.vehicle,
+      flex: 1,
+      editable: false,
+      valueGetter: (params: GridValueGetterParams) => params.row.stops.length,
     },
     {
       field: "cancel",
       headerName: "",
       sortable: false,
+      flex: 1,
       disableExport: true,
-      width: 200,
       renderCell: (
         params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>
       ) => {
@@ -91,7 +87,7 @@ function Table({ openDrawer, data }: any) {
     <>
       <Box sx={{ height: "100%", width: "100%", pt: 2 }}>
         <DataGrid
-          getRowId={(row) => row.vehicle}
+          getRowId={(row) => row.id}
           rows={data.routes}
           columns={columns}
           initialState={{

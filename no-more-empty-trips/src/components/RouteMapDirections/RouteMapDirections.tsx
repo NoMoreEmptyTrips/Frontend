@@ -138,7 +138,7 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
           <ScaleControl position="bottom-right" />
         </Map>
       </DeckGL>
-      <div style={{ position: "absolute", right: 0, zIndex: 9999999 }}>
+      {/* <div style={{ position: "absolute", right: 0, zIndex: 9999999 }}>
         {routes && routes?.length === 1 && (
           <ul>
             {routes[0].legs.map((leg: any, i: number) => (
@@ -146,7 +146,7 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
     </>
   );
 };

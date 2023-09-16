@@ -7,11 +7,17 @@ import { DRAWER_WIDTH, THEME_COLOR } from "../../constants";
 import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Divider from "@mui/material/Divider";
+/* import Logo from "../../hackzurich.png";
+import mainLogo from'../../hackzurich.png';
+import mainLogo from'./holicm.png'; */
+const photo = require('./holicm.png');
+
 
 function AppLayout() {
   return (
     <Box>
       <CssBaseline />
+      <p>Test</p>
       <AppBar
         position="fixed"
         sx={{
@@ -19,7 +25,7 @@ function AppLayout() {
           ml: `${DRAWER_WIDTH}px`,
         }}
       >
-        <Toolbar sx={{ backgroundColor: THEME_COLOR }}>
+        <Toolbar sx={{ backgroundColor: THEME_COLOR }} style={{ borderBottom: "1.5px #8a8a8a solid" }}>
           <Typography variant="h6" noWrap component="div">
             Holcim MAQER
           </Typography>
@@ -40,6 +46,7 @@ function AppLayout() {
         anchor="left"
       >
         <Toolbar />
+        <img style={{ position: 'absolute', top: 0, left: 20, height: '60px' }} src={photo} alt="holcim logo" />
         <Divider />
         <SideNavBarList />
       </MuiDrawer>

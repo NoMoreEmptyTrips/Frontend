@@ -18,12 +18,11 @@ function SideNavBarList() {
   });
 
   return (
-    <List sx={{ height: "100%" }}>
+    <List sx={{ height: "100%", borderRight: "1.5px solid #8a8a8a", color: "black" }}>
       <Box sx={{ px: 1 }}>
         <Typography
           variant="subtitle2"
           fontWeight={300}
-          color="white"
           sx={{ pl: "15px" }}
         >
           Route mapping
@@ -43,7 +42,6 @@ function SideNavBarList() {
         <Typography
           variant="subtitle2"
           fontWeight={300}
-          color="white"
           sx={{ pl: "15px", pt: 1 }}
         >
           Management

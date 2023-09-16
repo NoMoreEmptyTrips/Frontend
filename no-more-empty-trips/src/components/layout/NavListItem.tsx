@@ -37,20 +37,20 @@ function NavListitem({
         sx={{
           paddingLeft: "12px",
           "&.Mui-selected": {
-            backgroundColor: "rgba(255,48,48,0.12)",
+            backgroundColor: "rgba(68,165,254,0.12)",
             borderRadius: "9px",
           },
           ":hover": {
-            backgroundColor: "rgba(255,48,48,0.12)",
+            backgroundColor: "rgba(68,165,254,0.12)",
             borderRadius: "9px",
           },
         }}
       >
-        {icon && <ListItemIcon sx={{ minWidth: "44px" }}>{icon}</ListItemIcon>}
+        {icon && <ListItemIcon color="black" sx={{ minWidth: "44px" }} style={{ color: 'red !important' }}>{icon}</ListItemIcon>}
         <ListItemText
           primary={primary}
           primaryTypographyProps={{
-            color: "white",
+            color: "black",
             fontWeight: "300",
             fontSize: 15,
           }}
