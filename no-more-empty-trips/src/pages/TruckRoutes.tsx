@@ -53,12 +53,19 @@ function TruckRoutes() {
         if (response.ok) {
           setLoading(false);
           const jsonData = await response.json();
-          let id = 1;
-          jsonData.routes.forEach((x: any) => {
-            x['id'] = id;
-            id += 1;
-          })
-          setData(jsonData);
+          if (Object.hasOwn(jsonData, 'code')) {
+            setErrorValue('No solution has been found. Increasing the number of trucks or expanding the delivery time frame might help with the issue.');
+            setErrorDialogOpen(true);
+          } else {
+            
+            let id = 1;
+            jsonData.routes.forEach((x: any) => {
+              x['id'] = id;
+              id += 1;
+            })
+            setData(jsonData);
+          }
+
         } else {
           setLoading(false);
           if (response.status === 400) {
@@ -70,7 +77,7 @@ function TruckRoutes() {
       } catch (error) {
         setLoading(false);
         console.error("Error fetching data:", error);
-        
+
       }
     }
   };
@@ -104,11 +111,11 @@ function TruckRoutes() {
             disabled={loading}
           />
         </LocalizationProvider>
-        <div style={{marginLeft: '10px'}}>
+        <div style={{ marginLeft: '10px' }}>
           <TextField disabled={loading} id="outlined-basic" label="Number of trucks" variant="outlined" type="number" value={numberOfTrucks} onChange={(e) => setNumberOfTrucks(e.target.value)} />
         </div>
-        <div style={{marginLeft: '10px'}}>
-          <Button style={{height: '55px'}} sx={{textTransform: 'none'}} variant="contained" disabled={loading} onClick={fetchData}>Calculate</Button>
+        <div style={{ marginLeft: '10px' }}>
+          <Button style={{ height: '55px' }} sx={{ textTransform: 'none' }} variant="contained" disabled={loading} onClick={fetchData}>Calculate</Button>
         </div>
       </Box>
       {startDateTime && endDateTime && numberOfTrucks ? (
