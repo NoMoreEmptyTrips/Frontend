@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Skeleton, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { styled } from "@mui/material/styles";
@@ -32,6 +32,37 @@ function Dashboard() {
     { key: "dropoffs", value: "Deliveries", unit: "" },
     { key: "avg_wait_time", value: "Average Wait Time", unit: "s" },
   ];
+
+  if (!data) {
+    return (
+      <Grid container spacing={2}>
+        <Grid xs={12}>
+          <Item>
+            <Skeleton
+              variant="rectangular"
+              width={210}
+              height={30}
+              style={{ marginBottom: 15 }}
+            />
+            <Skeleton variant="rectangular" width={"100%"} height={400} />
+          </Item>
+        </Grid>
+        {[1, 2, 3].map((i) => (
+          <Grid xs={4}>
+            <Item key={i}>
+              <Skeleton
+                variant="rectangular"
+                width={i * 100}
+                height={30}
+                style={{ marginBottom: 15 }}
+              />
+              <Skeleton variant="rectangular" width={"100%"} height={300} />
+            </Item>
+          </Grid>
+        ))}
+      </Grid>
+    );
+  }
 
   return (
     <Grid container spacing={2}>
