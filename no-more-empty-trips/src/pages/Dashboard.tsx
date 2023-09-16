@@ -110,7 +110,7 @@ function Dashboard() {
                     value: Number(((mockData as any)[k.key] as any)[r]),
                   }))}
                 >
-                  <YAxis unit={k.unit} /> <Tooltip />
+                  <YAxis unit={k.unit} scale={"auto"} /> <Tooltip />
                   <XAxis />
                   <CartesianGrid strokeDasharray="3 3" />
                   <Bar dataKey="value" fill="#0284c7" />
