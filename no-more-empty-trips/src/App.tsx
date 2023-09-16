@@ -1,27 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import AppLayout from './Layout';
+import { Box } from "@mui/material";
+import AppLayout from "./components/layout/AppLayout";
+
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    <div className="App">
+    <Box sx={{ display: "flex" }}>
       <AppLayout />
-      <input />
-      <Routes>
-        <Route path="/home" element={
-          <p>
-            HELLO THERE THIS IS HOME
-          </p>
-        }></Route>
-        <Route path="/test" element={
-          <p>
-            asasdfasdfasdfasdfasdfasdf
-          </p>
-        }></Route>
-      </Routes>
-    </div>
+      <Box
+        component="main"
+        px={{ xs: 0, sm: 9, md: 9, lg: 9 }}
+        sx={{ flexGrow: 1, pt: 10 }}
+      >
+        <AppRoutes />
+      </Box>
+    </Box>
   );
 }
 
