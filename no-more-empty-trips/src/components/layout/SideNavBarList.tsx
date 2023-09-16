@@ -23,6 +23,7 @@ function SideNavBarList() {
         <Typography
           variant="subtitle2"
           fontWeight={300}
+          color="white"
           sx={{ pl: "15px" }}
         >
           Route mapping
@@ -42,6 +43,7 @@ function SideNavBarList() {
         <Typography
           variant="subtitle2"
           fontWeight={300}
+          color="white"
           sx={{ pl: "15px", pt: 1 }}
         >
           Management

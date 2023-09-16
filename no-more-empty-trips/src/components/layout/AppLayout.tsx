@@ -11,6 +11,7 @@ import Divider from "@mui/material/Divider";
 import mainLogo from'../../hackzurich.png';
 import mainLogo from'./holicm.png'; */
 const photo = require('./holicm.png');
+const hackzurich = require('./hackzurich.png');
 
 
 function AppLayout() {
@@ -27,7 +28,7 @@ function AppLayout() {
       >
         <Toolbar sx={{ backgroundColor: THEME_COLOR }} style={{ borderBottom: "1.5px #8a8a8a solid" }}>
           <Typography variant="h6" noWrap component="div">
-            Holcim MAQER
+            <img src={hackzurich} alt="hackzurich" style={{height: '62px', position: 'absolute', top: 0, right: 0}} />
           </Typography>
         </Toolbar>
       </AppBar>

@@ -5,27 +5,27 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 
 export const DRAWER_WIDTH = 225;
 
-export const THEME_COLOR = "#e3e3e3";
+export const THEME_COLOR = "#202124";
 
 export const NAV_ITEM_LIST = [
   {
     page: "Dashboard",
     path: "/dashboard",
-    icon: <AssessmentIcon  />,
+    icon: <AssessmentIcon style={{color: "white"}} />,
   },
   {
     page: "Routes",
     path: "/routes",
-    icon: <MapIcon />,
+    icon: <MapIcon style={{color: "white"}}  />,
   },
   {
     page: "Customers",
     path: "/customers",
-    icon: <PeopleIcon />,
+    icon: <PeopleIcon style={{color: "white"}}  />,
   },
   {
     page: "Deliveries",
     path: "/deliveries",
-    icon: <LocalShippingIcon />,
+    icon: <LocalShippingIcon style={{color: "white"}}  />,
   },
 ];

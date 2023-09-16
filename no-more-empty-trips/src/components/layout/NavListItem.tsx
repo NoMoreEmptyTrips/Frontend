@@ -50,7 +50,7 @@ function NavListitem({
         <ListItemText
           primary={primary}
           primaryTypographyProps={{
-            color: "black",
+            color: "white",
             fontWeight: "300",
             fontSize: 15,
           }}

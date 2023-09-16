@@ -108,7 +108,7 @@ function TruckRoutes() {
           <TextField disabled={loading} id="outlined-basic" label="Number of trucks" variant="outlined" type="number" value={numberOfTrucks} onChange={(e) => setNumberOfTrucks(e.target.value)} />
         </div>
         <div style={{marginLeft: '10px'}}>
-          <Button style={{height: '55px'}} variant="contained" disabled={loading} onClick={fetchData}>Calculate</Button>
+          <Button style={{height: '55px'}} sx={{textTransform: 'none'}} variant="contained" disabled={loading} onClick={fetchData}>Calculate</Button>
         </div>
       </Box>
       {startDateTime && endDateTime && numberOfTrucks ? (
