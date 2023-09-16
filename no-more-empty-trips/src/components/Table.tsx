@@ -1,5 +1,5 @@
 import * as React from "react";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRenderCellParams, GridTreeNodeWithRender, GridValueGetterParams } from "@mui/x-data-grid";
 import MapIcon from "@mui/icons-material/Map";
 import { Box, Button } from "@mui/material";
 import responseData from "../resources/response.json";
@@ -64,14 +64,14 @@ function Table({ openDrawer }: any) {
       sortable: false,
       disableExport: true,
       width: 200,
-      renderCell: () => {
+      renderCell: (params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>) => {
         return (
           <Button
             variant="contained"
             size="small"
             sx={{ textTransform: "none" }}
             endIcon={<MapIcon />}
-            onClick={() => openDrawer()}
+            onClick={() => openDrawer(params.row)}
           >
             Open Map
           </Button>

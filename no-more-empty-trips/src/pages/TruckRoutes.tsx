@@ -10,14 +10,16 @@ import MapDrawer from "../components/MapDrawer";
 
 function TruckRoutes() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-
-  const openDrawer = () => {
-    setIsDrawerOpen(true);
-  };
+  const [selectedRoute, setSelectedRoute] = React.useState(null);
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
   };
+
+  const setNewRoute = (data: any) => {
+    setIsDrawerOpen(true);
+    setSelectedRoute(data);
+  }
 
   return (
     <Box overflow="hidden">
@@ -26,7 +28,7 @@ function TruckRoutes() {
       </Typography>
       <Box display="flex" flexDirection="column" alignItems="center">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker disablePast={true} />
+          <DatePicker disablePast={false} />
         </LocalizationProvider>
         <Box
           display="flex"
@@ -43,12 +45,12 @@ function TruckRoutes() {
           </LocalizationProvider>
         </Box>
       </Box>
-      <MapDrawer open={isDrawerOpen} onClose={closeDrawer} />
+      <MapDrawer open={isDrawerOpen} onClose={closeDrawer} inputData={selectedRoute} />
       <Box pt={{ xs: 2, sm: 2 }}>
         <Typography fontWeight="bold" color={THEME_COLOR}>
           Delivery Routes
         </Typography>
-        <Table openDrawer={openDrawer} />
+        <Table openDrawer={setNewRoute} />
       </Box>
     </Box>
   );

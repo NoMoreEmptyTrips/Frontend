@@ -17,7 +17,9 @@ function MapDrawer({ open, onClose }: any) {
       onClose={onClose}
       onOpen={() => {}}
     >
-      <Box sx={{ width: 1250 }} onClick={onClose} onKeyDown={onClose}></Box>
+      <Box sx={{ width: 1250 }} onClick={onClose} onKeyDown={onClose}>
+      <p>Test</p>
+      </Box>
     </SwipeableDrawer>
   );
 }
