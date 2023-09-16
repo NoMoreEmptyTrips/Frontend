@@ -10,7 +10,7 @@ function App() {
       <Box
         component="main"
         px={{ xs: 0, sm: 9, md: 9, lg: 9 }}
-        sx={{ flexGrow: 1, pt: 10 }}
+        sx={{ flexGrow: 1, pt: 15 }}
       >
         <AppRoutes />
       </Box>
