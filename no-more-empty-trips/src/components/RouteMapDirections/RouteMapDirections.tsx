@@ -9,6 +9,7 @@ import {
   NavigationControl,
   ScaleControl,
 } from "react-map-gl";
+import "./RouteMapDirections.css";
 
 export type Stop = {
   location: string;
@@ -84,14 +85,18 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
         ...layers,
         new IconLayer({
           id: "icon-layer",
-          data: stops.map((s) => ({
+          data: stops.map((s, i) => ({
             coordinates: s.location_metadata.snapped_coordinate,
+            index: i,
+            type: s.type,
           })),
           getIcon: (d) => ({
             url: svgToDataURL(`<svg width="100" height="100" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" fill="#fff" stroke="#0080ff" stroke-width="2"/>
-            <text text-anchor="middle" alignment-baseline="central" fill="#0080ff" class="default">
-              <tspan x="12" dy="17">1</tspan>
+            <text text-anchor="middle" alignment-baseline="central" fill="#0080ff" class="marker" font-size="0.75em">
+              <tspan x="12" dy="16">${
+                d.type === "pickup" ? "🏭" : d.index + 1
+              }</tspan>
             </text>
           </svg>`),
             width: 100,
@@ -106,9 +111,9 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
       width={1000}
       height={500}
       initialViewState={{
-        longitude: -73.99566831245832,
-        latitude: 40.72724507379965,
-        zoom: 12,
+        longitude: stops[0].location_metadata.snapped_coordinate[0],
+        latitude: stops[0].location_metadata.snapped_coordinate[1],
+        zoom: 8,
         pitch: 0,
       }}
       controller
