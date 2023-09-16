@@ -139,7 +139,7 @@ const RouteMapDirections = ({ stops }: { stops: Stop[] }) => {
         </Map>
       </DeckGL>
       <div style={{ position: "absolute", right: 0, zIndex: 9999999 }}>
-        {routes && routes.length === 1 && (
+        {routes && routes?.length === 1 && (
           <ul>
             {routes[0].legs.map((leg: any, i: number) => (
               <li key={i}>{leg.summary}</li>

@@ -1,11 +1,15 @@
-import * as React from "react";
-import { DataGrid, GridColDef, GridRenderCellParams, GridTreeNodeWithRender, GridValueGetterParams } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridRenderCellParams,
+  GridTreeNodeWithRender,
+  GridValueGetterParams,
+} from "@mui/x-data-grid";
 import MapIcon from "@mui/icons-material/Map";
 import { Box, Button } from "@mui/material";
-import responseData from "../resources/response.json";
 import dayjs from "dayjs";
 
-function Table({ openDrawer }: any) {
+function Table({ openDrawer, data }: any) {
   const columns: GridColDef[] = [
     {
       field: "vehicle",
@@ -30,7 +34,8 @@ function Table({ openDrawer }: any) {
       editable: true,
       valueGetter: (params: GridValueGetterParams) =>
         //check what is happening with time
-        dayjs(params.row.stops[params.row.stops.length - 1].eta).format(
+
+        dayjs(params.row.stops[params.row.stops?.length - 1].eta).format(
           "ddd, MMM D  HH:mm"
         ),
     },
@@ -42,7 +47,7 @@ function Table({ openDrawer }: any) {
       valueGetter: (params: GridValueGetterParams) => {
         const startTime = dayjs(params.row.stops[0].eta);
         const endTime = dayjs(
-          params.row.stops[params.row.stops.length - 1].eta
+          params.row.stops[params.row.stops?.length - 1].eta
         );
 
         const hoursDiff = endTime.diff(startTime, "hour"); // Get the difference in hours
@@ -64,7 +69,9 @@ function Table({ openDrawer }: any) {
       sortable: false,
       disableExport: true,
       width: 200,
-      renderCell: (params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>) => {
+      renderCell: (
+        params: GridRenderCellParams<any, any, any, GridTreeNodeWithRender>
+      ) => {
         return (
           <Button
             variant="contained"
@@ -85,7 +92,7 @@ function Table({ openDrawer }: any) {
       <Box sx={{ height: "100%", width: "100%", pt: 2 }}>
         <DataGrid
           getRowId={(row) => row.vehicle}
-          rows={responseData.routes}
+          rows={data.routes}
           columns={columns}
           initialState={{
             pagination: {
