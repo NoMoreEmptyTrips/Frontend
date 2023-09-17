@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useFetch } from "usehooks-ts";
 import { THEME_COLOR } from "../constants";
 
+const apiUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
 export type Client = {
   _id: string;
   code: string;
@@ -27,7 +29,7 @@ function Customers() {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const { data, error } = useFetch<{ data: Client[] }>(
-    `http://localhost:8000/clients?limit=${limit}0&page=${page}`
+    `${apiUrl}/clients?limit=${limit}0&page=${page}`
   );
 
   if (error) return <p>There is an error.</p>;

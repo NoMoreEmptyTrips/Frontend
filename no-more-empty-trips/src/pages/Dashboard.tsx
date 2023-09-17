@@ -17,6 +17,8 @@ import {
 } from "recharts";
 import { useFetch } from "usehooks-ts";
 
+const apiUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -26,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function Dashboard() {
-  const { data, error } = useFetch<any>(`http://localhost:8000/dashboard`);
+  const { data, error } = useFetch<any>(`${apiUrl}/dashboard`);
   const values = [
     { key: "avg_stops", value: "Average Stops", unit: "" },
     { key: "dropoffs", value: "Deliveries", unit: "" },

@@ -103,11 +103,14 @@ const columns: GridColDef[] = [
   },
 ];
 
+const apiUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
+
 function Deliveries() {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
   const { data, error } = useFetch<{ data: Client[] }>(
-    `http://localhost:8000/trips?limit=${limit}0&page=${page}`
+    `${apiUrl}/trips?limit=${limit}0&page=${page}`
   );
 
   if (error) return <p>There is an error.</p>;

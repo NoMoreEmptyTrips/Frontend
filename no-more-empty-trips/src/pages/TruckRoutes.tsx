@@ -10,6 +10,9 @@ import dayjs from "dayjs";
 import CircularProgress from "@mui/material/CircularProgress";
 import ErrorDialog from "../components/ErrorDialog";
 
+const apiUrl = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PROD_API_URL : process.env.REACT_APP_DEV_API_URL;
+
+
 function TruckRoutes() {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [selectedRoute, setSelectedRoute] = React.useState(null);
@@ -42,7 +45,7 @@ function TruckRoutes() {
     if (!!startDateTime && !!endDateTime && !!numberOfTrucks) {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:8000/calculate-route", {
+        const response = await fetch(`${apiUrl}/calculate-route`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
